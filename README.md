@@ -1,5 +1,5 @@
-# WebStack
-WordPress 版 WebStack 主题。<a href="http://webstack.iotheme.cn/">前往演示站</a>
+# WebStack-MCRES
+针对 mcres.cn 进行优化魔改的 WordPress 版 WebStack 主题。
 <br/>
 
 ### 声明
