@@ -1,0 +1,42 @@
+<?php
+/*
+ * @Author: iowen
+ * @Author URI: https://www.iowen.cn/
+ * @Date: 2021-02-21 21:26:02
+ * @LastEditors: iowen
+ * @LastEditTime: 2023-02-20 20:53:39
+ * @FilePath: \WebStack\header.php
+ * @Description: 
+ */ 
+if ( ! defined( 'ABSPATH' ) ) { exit; } 
+?>
+<!DOCTYPE html>
+<html <?php language_attributes(); ?>>
+<head>
+<meta charset="<?php bloginfo( 'charset' ); ?>">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<?php if ( is_home() || is_front_page() ) : ?>
+<title><?php bloginfo('name'); ?> | <?php bloginfo( 'description');?></title>
+<?php else : ?>
+<title><?php wp_title( '|', true, 'right' ); bloginfo('name'); ?></title>
+<?php endif; ?>
+<meta name="theme-color" content="#2C2E2F" />
+<meta name="keywords" content="<?php echo io_get_option('seo_home_keywords') ?>">
+<meta name="description" content="<?php echo io_get_option('seo_home_desc') ?>">
+<meta property="og:type" content="article">
+<meta property="og:url" content="<?php echo home_url() ?>">
+<meta property="og:title" content="<?php echo io_get_option('seo_home_desc') ?>">
+<meta property="og:description" content="<?php echo io_get_option('seo_home_keywords') ?>">
+<meta property="og:image" content="<?php echo get_theme_file_uri('/screenshot.jpg') ?>">
+<meta property="og:site_name" content="<?php echo io_get_option('seo_home_desc') ?>">
+<link rel="shortcut icon" href="/favicon.ico">
+<link rel="apple-touch-icon" href="<?php echo io_get_option('apple_icon') ?>">
+<link rel="preload" href="<?php echo THEME_URL; ?>/css/nav.css" as="style">
+<link rel="preload" href="<?php echo THEME_URL; ?>/fonts/fontawesome-webfont.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="dns-prefetch" href="//t.mwm.moe">
+<?php wp_head(); ?>
+</head> 
+ <body class="page-body <?php echo io_get_option('theme_mode')?>">
+ 
+    <div class="page-container">
+      
