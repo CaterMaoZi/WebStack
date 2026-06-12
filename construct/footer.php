@@ -126,7 +126,8 @@ if ($police_icp = io_get_option('police_icp')) {
 <!-- 移动端抽屉菜单：导航分类(左) + 友链(右) -->
 <script>
 (function(){
-    // 不再检测宽度限制 — 抽屉DOM始终创建，桌面端自然隐藏
+    // 桌面端不创建抽屉DOM，避免显示在footer下方
+    if(window.innerWidth >= 768) return;
 
     var bodyOverflow = { set: function(v){ document.body.style.overflow = v; }, reset: function(){ this.set(''); } };
 

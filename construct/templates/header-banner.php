@@ -90,11 +90,11 @@ $friend_links = get_posts(array(
   justify-content: flex-start;
   margin: 0 !important;
   padding: 0 24px;
-  height: 96px !important;
-  min-height: 96px !important;
+  height: 50px !important;
+  min-height: 50px !important;
   position: fixed !important;
   top: 0 !important;
-  left: 0 !important;
+  left: 250px !important;
   right: 0 !important;
   width: auto !important;
   max-width: none !important;
@@ -179,6 +179,10 @@ $friend_links = get_posts(array(
     flex: 1;
     justify-content: flex-end;
   }
+  /* 侧边栏折叠态 banner left 适配 */
+  body.sidebar-collapsed #top-nav {
+    left: 80px !important;
+  }
 }
 
 /* ===== 移动端 ===== */
@@ -195,3 +199,35 @@ $friend_links = get_posts(array(
   /* 地球按钮加大点击区域 */
 }
 </style>
+<script>
+/* 侧边栏折叠联动 Banner */
+(function(){
+  if(window.innerWidth < 768) return;
+  var sidebar = document.querySelector('.sidebar-menu');
+  var body = document.body;
+  if(!sidebar) return;
+  if(localStorage.getItem('sidebar-collapsed') === '1'){
+    sidebar.classList.add('collapsed');
+    body.classList.add('sidebar-collapsed');
+  }
+  window.syncSidebarState = function(){
+    if(sidebar.classList.contains('collapsed')){
+      body.classList.add('sidebar-collapsed');
+      localStorage.setItem('sidebar-collapsed', '1');
+    } else {
+      body.classList.remove('sidebar-collapsed');
+      localStorage.removeItem('sidebar-collapsed');
+    }
+  };
+  window.syncSidebarState();
+  /* 桌面端汉堡按钮：切换侧边栏折叠态 */
+  var hamburger = document.querySelector('#top-nav a[data-toggle="sidebar"]') || document.querySelector('#nav-hamburger');
+  if(hamburger){
+    hamburger.addEventListener('click', function(e){
+      e.preventDefault();
+      sidebar.classList.toggle('collapsed');
+      window.syncSidebarState();
+    });
+  }
+})();
+</script>

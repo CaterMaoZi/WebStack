@@ -499,6 +499,22 @@ footer>a{
         z-index: 999 !important;
         background: rgba(12,12,18,.97) !important;
     }
+    /* 桌面端main-content适配固定banner高度(50px)+间距 */
+    .page-container .main-content{
+        padding-top: 60px !important;
+    }
+    /* banner和main-content的过渡动画 */
+    #top-nav,
+    body.sidebar-collapsed #top-nav{
+        transition: left .3s cubic-bezier(.4,0,.2,1) !important;
+    }
+    /* 桌面端隐藏移动端抽屉元素（JS在所有尺寸下创建了DOM，但仅移动端需要） */
+    .fl-drawer-overlay,
+    .fl-drawer,
+    .mobile-drawer-overlay,
+    .mobile-drawer{
+        display: none !important;
+    }
 }
 /* 折叠态：严格80px，高优先级覆盖 */
 .page-container .sidebar-menu.collapsed .sidebar-menu-inner{
